@@ -18,10 +18,10 @@ const config: ModuleFederationConfig = {
     'user',
     'sla',
     'notification',
-    'audit',
+    ['audit', 'http://localhost:4204'],
     'reconciliation',
     'corporateaction',
-    'analytics',
+    ['analytics', 'http://localhost:4207'], 
   ],
 };
 

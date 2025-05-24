@@ -5,7 +5,9 @@ import baseConfig from './module-federation.config';
 
 const config: ModuleFederationConfig = {
   ...baseConfig,
-  
+   remotes: [
+     
+   ]
 };
 
 // Nx plugins for webpack to build the final config

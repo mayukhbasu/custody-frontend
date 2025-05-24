@@ -1,27 +1,25 @@
 import { composePlugins, withNx, ModuleFederationConfig } from '@nx/webpack';
 import { withReact } from '@nx/react';
 import { withModuleFederation } from '@nx/react/module-federation';
-
 import baseConfig from './module-federation.config';
 
 const config: ModuleFederationConfig = {
   ...baseConfig,
-  remotes: [
-       ['analytics', 'http://localhost:4207'],
-       ['audit', 'http://localhost:4204'],
-     ]
+  
 };
 
-// Nx plugins for webpack to build config object from Nx options and context.
+// Nx plugins for webpack to build the final config
 export default composePlugins(
   withNx(),
   withReact(),
   withModuleFederation(config),
+
+  // 🔧 Optional override to disable HMR if needed
   (config: any) => {
     config.devServer = {
       ...config.devServer,
-      hot: false, // ✅ disables HMR
-      liveReload: true, // ✅ still reloads on save
+      hot: false, // Disables Hot Module Reloading
+      liveReload: true,
     };
     return config;
   }

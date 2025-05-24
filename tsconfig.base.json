@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@custody-mf/shared-ui": ["shared-ui/src/index.ts"],
       "analytics/Module": ["analytics/src/remote-entry.ts"],
       "audit/Module": ["audit/src/remote-entry.ts"],
       "corporateaction/Module": ["corporateaction/src/remote-entry.ts"],

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import NxWelcome from './nx-welcome';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, Route, Routes } from 'react-router-dom';
 
 export function App() {
@@ -10,6 +10,7 @@ export function App() {
       <ul>
         <li>
           <Link to="/">Home</Link>
+          
         </li>
       </ul>
       <Routes>

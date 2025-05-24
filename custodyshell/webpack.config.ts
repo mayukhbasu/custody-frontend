@@ -12,5 +12,13 @@ const config: ModuleFederationConfig = {
 export default composePlugins(
   withNx(),
   withReact(),
-  withModuleFederation(config)
+  withModuleFederation(config),
+  (config: any) => {
+    config.devServer = {
+      ...config.devServer,
+      hot: false, // ✅ disables HMR
+      liveReload: true, // ✅ still reloads on save
+    };
+    return config;
+  }
 );

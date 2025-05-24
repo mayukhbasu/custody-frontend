@@ -1,0 +1,23 @@
+{
+  "name": "corporateaction-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "corporateaction-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["corporateaction"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "corporateaction-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "corporateaction:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "corporateaction:serve:production"
+        }
+      }
+    }
+  }
+}

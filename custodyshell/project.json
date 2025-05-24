@@ -1,0 +1,84 @@
+{
+  "name": "custodyshell",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "custodyshell/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/custodyshell",
+        "index": "custodyshell/src/index.html",
+        "baseHref": "/",
+        "main": "custodyshell/src/main.ts",
+        "tsConfig": "custodyshell/tsconfig.app.json",
+        "assets": ["custodyshell/src/favicon.ico", "custodyshell/src/assets"],
+        "styles": ["custodyshell/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "custodyshell/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "custodyshell/src/environments/environment.ts",
+              "with": "custodyshell/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "custodyshell/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "custodyshell:build",
+        "hmr": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "custodyshell:build:development"
+        },
+        "production": {
+          "buildTarget": "custodyshell:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "custodyshell:build",
+        "watch": false,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "custodyshell:build:development"
+        },
+        "production": {
+          "buildTarget": "custodyshell:build:production"
+        }
+      }
+    }
+  }
+}

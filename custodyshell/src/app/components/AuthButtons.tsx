@@ -1,11 +1,18 @@
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
-import {jwtDecode} from 'jwt-decode';
-import { useState } from 'react';
-
-
+import { jwtDecode } from 'jwt-decode';
+import { useEffect, useState } from 'react';
+import type { GoogleIdTokenPayload } from '../types/GoogleIdTokenPayload';
 
 export function AuthButtons() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<GoogleIdTokenPayload | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const decoded = jwtDecode<GoogleIdTokenPayload>(token);
+      setUser(decoded);
+    }
+  }, []);
 
   return (
     <div>
@@ -13,8 +20,7 @@ export function AuthButtons() {
         <GoogleLogin
           onSuccess={(credentialResponse) => {
             if (credentialResponse.credential) {
-              const decoded = jwtDecode(credentialResponse.credential);
-              console.log('Decoded JWT:', decoded);
+              const decoded = jwtDecode<GoogleIdTokenPayload>(credentialResponse.credential);
               setUser(decoded);
               localStorage.setItem('accessToken', credentialResponse.credential);
             }
@@ -25,7 +31,7 @@ export function AuthButtons() {
         />
       ) : (
         <div>
-          <p>{JSON.stringify(user)}</p>
+          <p>Welcome, {user.name} ({user.email})</p>
           <button
             onClick={() => {
               googleLogout();

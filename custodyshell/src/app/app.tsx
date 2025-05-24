@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import RemoteWrapper from './remote-wrapper';
+import HomePage from './pages/HomePage';
 
   const  App= () => {
   return (
@@ -27,6 +28,7 @@ import RemoteWrapper from './remote-wrapper';
       {/* Route Loader */}
       <div className="container mt-4">
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/user" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="user" /></React.Suspense>} />
           <Route path="/sla" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="sla" /></React.Suspense>} />
           <Route path="/notification" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="notification" /></React.Suspense>} />

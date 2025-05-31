@@ -11,7 +11,7 @@ const RegisterPage = () => {
   return (
     <div className="container mt-5">
       <h2>Register</h2>
-      <AuthForm onSubmit={handleRegister} isRegister />
+      <AuthForm onSubmit={handleRegister} isRegister={true} />
     </div>
   );
 };

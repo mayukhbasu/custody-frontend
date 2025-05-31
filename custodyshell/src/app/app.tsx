@@ -2,6 +2,8 @@ import { Link, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import RemoteWrapper from './remote-wrapper';
 import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
   const  App= () => {
   return (
@@ -28,7 +30,8 @@ import HomePage from './pages/HomePage';
       {/* Route Loader */}
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<RegisterPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
           <Route path="/user" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="user" /></React.Suspense>} />
           <Route path="/sla" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="sla" /></React.Suspense>} />
           <Route path="/notification" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="notification" /></React.Suspense>} />

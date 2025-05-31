@@ -3,7 +3,7 @@ import AuthForm from '../components/AuthForm';
 import { login } from '../services/authService';
 
 const LoginPage = () => {
-  const handleLogin = async (data: any) => {
+  const handleLogin = async (data: {email: string, name?: string, password: string}) => {
     const response = await login(data);
     localStorage.setItem('token', response.token);
     alert('Login successful');

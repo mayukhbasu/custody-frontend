@@ -1,4 +1,4 @@
-export const register = async (data: { email: string; name: string; password: string }) => {
+export const register = async (data: { email: string; name?: string; password: string }) => {
   return fetch('http://localhost:8087/users/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

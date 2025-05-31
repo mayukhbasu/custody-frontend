@@ -1,7 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import RemoteWrapper from './remote-wrapper';
-import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 

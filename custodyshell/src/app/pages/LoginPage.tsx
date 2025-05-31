@@ -1,12 +1,20 @@
-import React from 'react';
 import AuthForm from '../components/AuthForm';
 import { login } from '../services/authService';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const handleLogin = async (data: {email: string, name?: string, password: string}) => {
-    const response = await login(data);
-    localStorage.setItem('token', response.token);
-    alert('Login successful');
+  const { login: loginContext } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = async (data: { email: string; password: string }) => {
+    const res = await login(data);
+    if (res.token) {
+      loginContext(res.token);
+      navigate('/user');
+    } else {
+      alert('Login failed');
+    }
   };
 
   return (

@@ -3,9 +3,9 @@ import AuthForm from '../components/AuthForm';
 import { register } from '../services/authService';
 
 const RegisterPage = () => {
-  const handleRegister = async (data: {email: string, name?: string, password: string}) => {
-    const response = await register(data);
-    console.log(response);
+  const handleRegister = async (data: { email: string; name?: string; password: string }) => {
+    const res = await register(data);
+    console.log(res);
   };
 
   return (

@@ -30,7 +30,7 @@ import LoginPage from './pages/LoginPage';
       <div className="container mt-4">
         <Routes>
           <Route path="/" element={<RegisterPage/>} />
-          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/user" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="user" /></React.Suspense>} />
           <Route path="/sla" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="sla" /></React.Suspense>} />
           <Route path="/notification" element={<React.Suspense fallback="Loading..."><RemoteWrapper name="notification" /></React.Suspense>} />

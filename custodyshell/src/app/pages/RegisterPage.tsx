@@ -1,11 +1,13 @@
 import React from 'react';
+import { toast } from "react-toastify"; // ✅ Import only the toast API
 import AuthForm from '../components/AuthForm';
-import { register } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const handleRegister = async (data: { email: string; name?: string; password: string }) => {
-    const res = await register(data);
-    console.log(res);
+    navigate('/login');
+    toast.success(`${data.name} has been created`); // 🎉 Trigger toast from shared setup
   };
 
   return (

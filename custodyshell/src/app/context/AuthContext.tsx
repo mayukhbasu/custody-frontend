@@ -1,5 +1,13 @@
-import { createContext, FC, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; // ✅ Import only the toast API
 
 type AuthContextType = {
   token: string | null;
@@ -16,19 +24,21 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
     setToken(storedToken);
     setLoading(false); // mark auth as initialized
   }, []);
 
   const login = (newToken: string) => {
-    localStorage.setItem('token', newToken);
+    localStorage.setItem("token", newToken);
     setToken(newToken);
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setToken(null);
+    toast.info("Logged out");
+    navigate("/login");
   };
 
   return (
@@ -40,6 +50,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) throw new Error("useAuth must be used inside AuthProvider");
+  if (!context)
+    throw new Error("useAuth must be used inside AuthProvider");
   return context;
 };

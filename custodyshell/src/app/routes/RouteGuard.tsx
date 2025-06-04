@@ -8,7 +8,7 @@ type RouteGuardProps = {
   redirectTo?: string; // where to redirect if access is denied
 };
 
-const RouteGuard = ({ children, access, redirectTo = '/user' }: RouteGuardProps) => {
+const RouteGuard = ({ children, access, redirectTo = '/login' }: RouteGuardProps) => {
   const { token, loading } = useAuth(); // assuming 'loading' is handled in context (optional)
 
   // Optional loading fallback — useful if checking token from async storage or API

@@ -1,0 +1,31 @@
+.user-hover {
+  position: relative;
+}
+
+.user-hover .custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #343a40;
+  border: 1px solid #495057;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.user-hover:hover .custom-dropdown-menu {
+  display: block;
+}
+
+.custom-dropdown-menu .dropdown-item {
+  color: #ffffff;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.custom-dropdown-menu .dropdown-item:hover {
+  background-color: #495057;
+}

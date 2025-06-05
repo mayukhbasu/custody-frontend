@@ -7,7 +7,6 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"; // ✅ Import only the toast API
 
 type AuthContextType = {
   token: string | null;
@@ -37,7 +36,6 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token");
     setToken(null);
-    toast.info("Logged out");
     navigate("/login");
   };
 

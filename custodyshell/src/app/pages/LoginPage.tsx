@@ -2,6 +2,7 @@ import AuthForm from '../components/AuthForm';
 import { login } from '../services/authService';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const { login: loginContext } = useAuth();
@@ -13,7 +14,7 @@ const LoginPage = () => {
       loginContext(res.token);
       navigate('/user');
     } else {
-      alert('Login failed');
+      toast.error('Login Failed');
     }
   };
 

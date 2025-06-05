@@ -1,0 +1,32 @@
+.table-container {
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.fixed-header {
+  border-collapse: separate;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.fixed-header thead th {
+  position: sticky;
+  top: 0;
+  background-color: #212529;
+  color: white;
+  z-index: 2;
+}
+
+.fixed-header tbody {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.fixed-header thead,
+.fixed-header tbody tr {
+  
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}

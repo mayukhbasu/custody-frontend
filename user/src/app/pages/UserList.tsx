@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchUsers, User } from '../api/userService';
+import './UserList.css'; // 🟡 Create this CSS file
 
 const UserList: React.FC = () => {
   const { data: users, isLoading, isError, error } = useQuery<User[]>({
@@ -19,10 +20,9 @@ const UserList: React.FC = () => {
   return (
     <div className="container mt-4">
       <h2>User List</h2>
-
-      <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
-        <table className="table table-bordered table-hover table-striped mt-3">
-          <thead className="table-dark" style={{ position: 'sticky', top: 0, zIndex: 1 }}>
+      <div className="table-container">
+        <table className="table table-bordered table-hover table-striped fixed-header">
+          <thead className="table-dark">
             <tr>
               <th>ID</th>
               <th>Name</th>

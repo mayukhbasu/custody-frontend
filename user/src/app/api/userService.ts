@@ -1,4 +1,6 @@
+// api/userService.ts
 import axios from 'axios';
+import { PaginatedUserResponse } from '../models/User';
 
 export type User = {
   id: number;
@@ -9,15 +11,17 @@ export type User = {
   createdDate: string;
 };
 
-export const fetchUsers = async (): Promise<User[]> => {
+export const paginateUsers = async (
+  search: string,
+  page: number,
+  size: number
+): Promise<PaginatedUserResponse> => {
   const token = localStorage.getItem('token');
-  if (!token) throw new Error('No auth token found');
-
-  const res = await axios.get('http://localhost:8087/users', {
+  const res = await axios.get(`http://localhost:8087/users`, {
+    params: { search, page, size },
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-
   return res.data;
 };

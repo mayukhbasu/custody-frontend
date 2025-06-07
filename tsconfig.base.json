@@ -19,6 +19,7 @@
       "analytics/Module": ["analytics/src/remote-entry.ts"],
       "audit/Module": ["audit/src/remote-entry.ts"],
       "corporateaction/Module": ["corporateaction/src/remote-entry.ts"],
+      "issue/Module": ["issue/src/remote-entry.ts"],
       "notification/Module": ["notification/src/remote-entry.ts"],
       "reconciliation/Module": ["reconciliation/src/remote-entry.ts"],
       "sla/Module": ["sla/src/remote-entry.ts"],

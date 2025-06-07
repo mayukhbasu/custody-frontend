@@ -19,7 +19,7 @@ const AppRoutes = () => (
       <RegisterPage />
     </RouteGuard>
   } />
-   {['user', 'sla', 'notification', 'audit', 'reconciliation', 'corporateaction', 'analytics'].map((route) => (
+   {['user','issue', 'sla', 'notification', 'audit', 'reconciliation', 'corporateaction', 'analytics'].map((route) => (
   <Route
     key={route}
     path={`/${route}`}

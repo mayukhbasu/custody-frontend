@@ -21,7 +21,8 @@ const config: ModuleFederationConfig = {
     'audit',
     'reconciliation',
     'corporateaction',
-    'analytics'
+    'analytics',
+    'issue',
   ],
 };
 

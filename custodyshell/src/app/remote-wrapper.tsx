@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const remotes: Record<string, () => Promise<{ default: React.ComponentType<any> }>> = {
+  issue: () => import('issue/Module'),
   user: () => import('user/Module'),
   sla: () => import('sla/Module'),
   notification: () => import('notification/Module'),

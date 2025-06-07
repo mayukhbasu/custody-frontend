@@ -1,0 +1,23 @@
+{
+  "name": "issue-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "issue-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["issue"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "issue-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "issue:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "issue:serve:production"
+        }
+      }
+    }
+  }
+}

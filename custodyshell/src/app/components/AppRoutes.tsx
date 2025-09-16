@@ -19,16 +19,16 @@ const AppRoutes = () => (
       <RegisterPage />
     </RouteGuard>
   } />
-   {['user','issue', 'sla', 'notification', 'audit', 'reconciliation', 'corporateaction', 'analytics'].map((route) => (
+   {['inventory','royalty', 'order'].map((route) => (
   <Route
     key={route}
     path={`/${route}`}
     element={
-      <RouteGuard access="private">
+      
         <React.Suspense fallback="Loading...">
           <RemoteWrapper name={route} />
         </React.Suspense>
-      </RouteGuard>
+      
     }
   />
 ))}

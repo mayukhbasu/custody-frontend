@@ -1,0 +1,23 @@
+{
+  "name": "royalty-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "royalty-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["royalty"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "royalty-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "royalty:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "royalty:serve:production"
+        }
+      }
+    }
+  }
+}

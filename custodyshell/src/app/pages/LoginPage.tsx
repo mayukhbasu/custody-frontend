@@ -9,13 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (data: { email: string; password: string }) => {
-    const res = await login(data);
-    if (res.token) {
-      loginContext(res.token);
-      navigate('/user');
-    } else {
-      toast.error('Login Failed');
-    }
+    navigate('/user');
   };
 
   return (

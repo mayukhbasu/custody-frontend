@@ -18,11 +18,12 @@ const config: ModuleFederationConfig = {
     'user',
     'sla',
     'notification',
-    'audit',
+
     'reconciliation',
-    'corporateaction',
-    'analytics',
     'issue',
+    'royalty',
+    'inventory',
+    'order',
   ],
 };
 

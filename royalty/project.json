@@ -1,0 +1,84 @@
+{
+  "name": "royalty",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "royalty/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/royalty",
+        "index": "royalty/src/index.html",
+        "baseHref": "/",
+        "main": "royalty/src/main.ts",
+        "tsConfig": "royalty/tsconfig.app.json",
+        "assets": ["royalty/src/favicon.ico", "royalty/src/assets"],
+        "styles": ["royalty/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "royalty/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "royalty/src/environments/environment.ts",
+              "with": "royalty/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "royalty/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "royalty:build",
+        "hmr": true,
+        "port": 4209
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "royalty:build:development"
+        },
+        "production": {
+          "buildTarget": "royalty:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "royalty:build",
+        "watch": false,
+        "port": 4209
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "royalty:build:development"
+        },
+        "production": {
+          "buildTarget": "royalty:build:production"
+        }
+      }
+    }
+  }
+}

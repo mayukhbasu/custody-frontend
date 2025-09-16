@@ -1,0 +1,84 @@
+{
+  "name": "order",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "order/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/order",
+        "index": "order/src/index.html",
+        "baseHref": "/",
+        "main": "order/src/main.ts",
+        "tsConfig": "order/tsconfig.app.json",
+        "assets": ["order/src/favicon.ico", "order/src/assets"],
+        "styles": ["order/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "order/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "order/src/environments/environment.ts",
+              "with": "order/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "order/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "order:build",
+        "hmr": true,
+        "port": 4211
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "order:build:development"
+        },
+        "production": {
+          "buildTarget": "order:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "order:build",
+        "watch": false,
+        "port": 4211
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "order:build:development"
+        },
+        "production": {
+          "buildTarget": "order:build:production"
+        }
+      }
+    }
+  }
+}

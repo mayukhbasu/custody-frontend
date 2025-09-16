@@ -27,11 +27,11 @@ const Navbar = () => {
               <li className="nav-item"><Link className="nav-link" to="/issue">Issues</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/sla">SLA</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/notification">Notification</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/audit">Audit</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/reconciliation">Reconciliation</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/corporateaction">Corporate Action</Link></li>
               
-              <li className="nav-item"><Link className="nav-link" to="/analytics">Analytics</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/reconciliation">Reconciliation</Link></li>
+              
+              
+              
               <li className="nav-item  user-hover">
                 <Link
                   className="nav-link"

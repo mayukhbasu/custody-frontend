@@ -1,0 +1,25 @@
+[NX v21.5.2 Daemon Server] - 2025-09-16T14:23:05.733Z - Started listening on: /private/var/folders/m9/1cr3gvxn5pjb54yxqrjw6z1r0000gn/T/98ec4431c69bcfc6dc9c/d.sock
+[NX v21.5.2 Daemon Server] - 2025-09-16T14:23:05.737Z - [WATCHER]: Subscribed to changes within: /Users/bubul/Code/work/custody-frontend (native)
+Time for 'plugin worker 39466 code loading' 1.9593330000000009
+Time for 'plugin worker 39464 code loading' 3.517750000000003
+Time for 'plugin worker 39470 code loading' 3.763290999999999
+Time for 'plugin worker 39471 code loading' 3.7454170000000016
+Time for 'plugin worker 39467 code loading' 4.529
+Time for 'plugin worker 39465 code loading' 5.146916999999998
+Time for 'plugin worker 39469 code loading' 3.207542
+Time for 'plugin worker 39468 code loading' 4.384874999999997
+
+node:internal/process/promises:391
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+{
+  stack: 'Error: Plugin @nx/eslint/plugin only provides `createNodes` which was removed in Nx 21, it should provide a `createNodesV2` implementation.\n' +
+    '    at new LoadedNxPlugin (/Users/bubul/Code/work/custody-frontend/node_modules/@nx/webpack/node_modules/nx/src/project-graph/plugins/loaded-nx-plugin.js:16:19)\n' +
+    '    at loadResolvedNxPluginAsync (/Users/bubul/Code/work/custody-frontend/node_modules/@nx/webpack/node_modules/nx/src/project-graph/plugins/load-resolved-plugin.js:8:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+    '    at async load (/Users/bubul/Code/work/custody-frontend/node_modules/@nx/webpack/node_modules/nx/src/project-graph/plugins/isolation/plugin-worker.js:46:30)\n' +
+    '    at async consumeMessage (/Users/bubul/Code/work/custody-frontend/node_modules/@nx/webpack/node_modules/nx/src/project-graph/plugins/isolation/messaging.js:42:26)',
+  message: 'Plugin @nx/eslint/plugin only provides `createNodes` which was removed in Nx 21, it should provide a `createNodesV2` implementation.'
+}
+
+Node.js v20.19.4

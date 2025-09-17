@@ -15,12 +15,6 @@ const config: ModuleFederationConfig = {
    *
    */
   remotes: [
-    'user',
-    'sla',
-    'notification',
-
-    'reconciliation',
-    'issue',
     'royalty',
     'inventory',
     'order',
